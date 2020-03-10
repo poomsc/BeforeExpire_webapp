@@ -25,22 +25,22 @@ def show_item(id):
     new_item = items[int(id)]
     return render_template('new_item.html',
                            id=new_item['id'],
-                           title=new_item['title'],
-                           body=new_item['body'])
+                           name=new_item['name'],
+                           date=new_item['date'])
 
 
-def new_items(title, body):
+def new_items(name, date):
     new_id = len(items.keys()) + 1
     return {
         'id': new_id,
-        'title': title,
-        'body': body
+        'name': name,
+        'date': date
     }
 
 
 @app.route('/news/create/', methods=['POST'])
 def create_new_item():
-    item = new_items(request.form['title'],
-                     request.form['body'])
+    item = new_items(request.form['name'],
+                     request.form['date'])
     items[item['id']] = item
     return redirect(url_for('index'))

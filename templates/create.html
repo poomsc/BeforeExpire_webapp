@@ -110,7 +110,7 @@
         <br />
         <br />
         <div class="form">
-            <input type="text" name="title" autocomplete="off" required />
+            <input type="text" name="name" autocomplete="off" required />
             <label for="name" class="label-name">
                 <span class="content-name">Item's Name</span>
             </label>
@@ -118,7 +118,7 @@
         <br />
         <br />
         <div class="form">
-            <input type="text" name="body" autocomplete="off" onfocus="this.placeholder = 'dd/mm/yyyy'"
+            <input type="text" name="date" autocomplete="off" onfocus="this.placeholder = 'dd/mm/yyyy'"
                 onblur="this.placeholder=''" required />
             <label for="name" class="label-name">
                 <span class="content-name">Expiry Date</span>
@@ -136,7 +136,7 @@
     <h1>Your item</h1>
     <ul>
         {% for item in items %}
-        <li><a href="{{ url_for('show_item',id=item.id) }}">{{ item.title + "*** Expire (" + item.body + ") ***" }}</a>
+        <li><a href="{{ url_for('show_item',id=item.id) }}">{{ item.name + "*** Expire (" + item.date + ") ***" }}</a>
         </li>
         {% endfor %}
     </ul>
