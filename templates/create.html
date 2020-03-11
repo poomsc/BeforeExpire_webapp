@@ -98,16 +98,11 @@
     <form class="box" action="{{ url_for('create_new_item') }}" method="POST">
         <h1 style="text-align:center">Add item</h1>
         <br />
-        <br />
         <p style="font-size: 18px;">Today: {{ time }}</p>
-        <br />
         <br />
         <div class="takePhoto">
             <input type="file" accept="image/*" capture="capture">
         </div>
-        <br />
-        <br />
-        <br />
         <br />
         <div class="form">
             <input type="text" name="name" autocomplete="off" required />
@@ -115,7 +110,6 @@
                 <span class="content-name">Item's Name</span>
             </label>
         </div>
-        <br />
         <br />
         <div class="form">
             <input type="text" name="date" autocomplete="off" onfocus="this.placeholder = 'dd/mm/yyyy'"
@@ -128,7 +122,6 @@
         <br />
         <span>
             <a href="/" class="ui red button" style="width: 100px;">CANCEL</a>
-
             <a href="/"><input type="submit" class="ui green button" value="SAVE" style="width: 100px;" /></a>
         </span>
     </form>
