@@ -59,7 +59,7 @@ def create_new_item():
         image = image_str
 
         item = new_items(name, date, image)
-        print(item)
+        # print(item)
         items[item['id']] = item
         return redirect(url_for('index'))
 # @app.route('/new/create/', methods=['POST'])
