@@ -100,9 +100,8 @@
         <br />
         <p style="font-size: 18px;">Today: {{ time }}</p>
         <br />
-        <div class="takePhoto">
-            <input type="file" accept="image/*" capture="capture">
-        </div>
+        <img id="blah" alt="your image" width="20%" height="20%" />
+        <input type="file" onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])">
         <br />
         <div class="form">
             <input type="text" name="name" autocomplete="off" required />

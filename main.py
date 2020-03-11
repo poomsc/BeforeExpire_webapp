@@ -19,12 +19,12 @@ def create():
                            time=time,
                            items=items.values())
 
-
-@app.route('/news/<id>/')
+@app.route('/new/<id>/')
 def show_item(id):
     new_item = items[int(id)]
     return render_template('new_item.html',
                            id=new_item['id'],
+                           #image=new_item['image'],
                            name=new_item['name'],
                            date=new_item['date'])
 
@@ -38,7 +38,7 @@ def new_items(name, date):
     }
 
 
-@app.route('/news/create/', methods=['POST'])
+@app.route('/new/create/', methods=['POST'])
 def create_new_item():
     item = new_items(request.form['name'],
                      request.form['date'])
