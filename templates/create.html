@@ -4,9 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Before Expire</title>
+    <link rel="icon" href="https://image.flaticon.com/icons/svg/859/859270.svg">
+
     <style>
         body {
-            height: 50vh;
+            height: auto;
             display: flex;
             justify-content: space-around;
             align-items: center;
@@ -19,7 +21,8 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            height: 50vh;
+            height: 120vh;
+            min-height: 50vh;
         }
 
         .form {
@@ -63,7 +66,7 @@
 
         .content-name {
             position: absolute;
-            bottom: 5px;
+            bottom: 15px;
             left: 0px;
             transition: all 0.3s ease;
         }
@@ -87,7 +90,33 @@
         input {
             width: 100%;
         }
+
+        img {
+            max-height: 25vh;
+        }
+
+        input#file {
+            width: 25vh;
+            overflow: hidden;
+        }
+
+        h1 {
+            padding: 20px;
+        }
     </style>
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#blah').attr('src', e.target.result);
+                    console.log(e.target.result)
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
     <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
@@ -95,14 +124,17 @@
 
 
 <body>
-    <form class="box" action="{{ url_for('create_new_item') }}" method="POST">
-        <h1 style="text-align:center">Add item</h1>
-        <br />
+    <br />
+    <h1>Add item</h1>
+    <br />
+    <form class="box" action="{{ url_for('create_new_item') }}" method="POST" enctype=multipart/form-data>
         <p style="font-size: 18px;">Today: {{ time }}</p>
-        <br />
-        <img id="blah" alt="your image" width="20%" height="20%" />
-        <input type="file" onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])">
-        <br />
+        <div style="align-items: center;">
+            <img id="blah" src="https://image.flaticon.com/icons/svg/859/859270.svg" alt="upload img"
+                style="align-items: center" />
+            <br />
+            <input type='file' id="file" class="ui blue basic button" onchange="readURL(this);" name="image" />
+        </div>
         <div class="form">
             <input type="text" name="name" autocomplete="off" required />
             <label for="name" class="label-name">
@@ -110,6 +142,7 @@
             </label>
         </div>
         <br />
+
         <div class="form">
             <input type="text" name="date" autocomplete="off" onfocus="this.placeholder = 'dd/mm/yyyy'"
                 onblur="this.placeholder=''" required />
@@ -118,14 +151,14 @@
             </label>
         </div>
         <br />
-        <br />
+
         <span>
             <a href="/" class="ui red button" style="width: 100px;">CANCEL</a>
             <a href="/"><input type="submit" class="ui green button" value="SAVE" style="width: 100px;" /></a>
         </span>
     </form>
 
-    <h1>Your item</h1>
+    <p>Your item</p>
     <ul>
         {% for item in items %}
         <li><a href="{{ url_for('show_item',id=item.id) }}">{{ item.name + "*** Expire (" + item.date + ") ***" }}</a>
