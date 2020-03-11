@@ -53,7 +53,7 @@ def create_new_item():
         name = request.form['name']
         date = request.form['date']
         image = request.files['image']
-
+        
         image_str = base64.b64encode(image.read())
         image_str = image_str.decode('utf-8')
         image = image_str
