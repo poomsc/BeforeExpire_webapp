@@ -11,13 +11,14 @@ items = {}
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index.html',
+                            items=items.values())
 
 
 @app.route('/create')
 def create():
     time = str(datetime.now())[0:10].split('-')
-    time = time[2] + '-' + time[1] + '-' + time[0]
+    time = time[2] + '/' + time[1] + '/' + time[0]
     return render_template('create.html',
                            time=time,
                            items=items.values())
@@ -26,7 +27,7 @@ def create():
 @app.route('/new/<id>/')
 def show_item(id):
     time = str(datetime.now())[0:10].split('-')
-    time = time[2] + '-' + time[1] + '-' + time[0]
+    time = time[2] + '/' + time[1] + '/' + time[0]
     new_item = items[int(id)]
     return render_template('new_item.html',
                            id=new_item['id'],
