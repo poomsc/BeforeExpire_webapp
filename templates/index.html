@@ -22,14 +22,38 @@
 </head>
 
 <body>
-    *****list show here*****
     <h1>Your item</h1>
-    <ul>
-        {% for item in items %}
-        <li><a href="{{ url_for('show_item',id=item.id) }}">{{ item.name + "*** Expire (" + item.date + ") ***" }}</a>
-        </li>
-        {% endfor %}
-    </ul>
+    *****show list here*****
+
+
+
+    <!-- don't touch code below -->
+    <div class="ui items">
+        <div class="item">
+            <div class="ui small image">
+                <img src="https://image.flaticon.com/icons/svg/859/859270.svg" />
+                <!-- {% if image == "" %}
+                    <img src="https://image.flaticon.com/icons/svg/859/859270.svg" alt="{{name}}" width="100px"/>
+                    {% else %}
+                    <img src="data:image/jpeg;base64,{{image}}" alt="{{name}}" width="100px" />
+                    {% endif %} -->
+            </div>
+            <div class="middle aligned content">
+                <div class="header">
+                    Content A
+                </div>
+                <div class="description">
+                    <p></p>
+                </div>
+                <div class="extra">
+                    <div class="ui right floated">
+                        <a href="/"><input type="submit" class="ui red button" value="REMOVE" /></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- don't touch code below -->
 
     <a href="/create"><button type="submit" class="ui teal button" style="width: 100px;">ADD</button></a>
 
