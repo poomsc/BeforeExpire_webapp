@@ -63,7 +63,10 @@
     <!-- don't touch code below -->
 
     <a href="/create"><button type="submit" class="ui teal button" style="width: 100px;">ADD</button></a>
-
+    <form action="{{ url_for('delete') }}" method = "POST">
+        ID of items : <input name = 'title'/>
+         <input type="submit" class="ui red button"value="DELETE"/>
+     </form>
 </body>
 
 </html>
