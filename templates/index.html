@@ -24,7 +24,14 @@
 <body>
     <h1>Your item</h1>
     *****show list here*****
-
+    <ul>
+        {% for item in items if item.chk==True%}
+        <li><a href="{{ url_for('show_item',id=item.id) }}">{{item.name + "*** Expire (" + item.date + ") ***"  }}</a>
+        </li>
+        
+        
+        {% endfor %}
+    </ul>
 
 
     <!-- don't touch code below -->
