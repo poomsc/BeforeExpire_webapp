@@ -63,6 +63,13 @@ def create_new_item():
         # print(item)
         items[item['id']] = item
         return redirect(url_for('index'))
+    
+@app.route('/delete/',methods=['POST'])
+def delete():
+    x = int(request.form['title'])
+    del[items[x]]
+    return redirect(url_for('index'))
+
 # @app.route('/new/create/', methods=['POST'])
 # def create_new_item():
 #     item = new_items(request.form['name'],

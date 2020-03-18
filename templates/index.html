@@ -24,7 +24,14 @@
 <body>
     <h1>Your item</h1>
     *****show list here*****
-
+    <ul>
+        {% for item in items%}
+        <li><a href="{{ url_for('show_item',id=item.id) }}">{{item.name + "*** Expire (" + item.date + ") ***"  }}</a>
+        </li>
+        
+        
+        {% endfor %}
+    </ul>
 
 
     <!-- don't touch code below -->
@@ -56,7 +63,10 @@
     <!-- don't touch code below -->
 
     <a href="/create"><button type="submit" class="ui teal button" style="width: 100px;">ADD</button></a>
-
+    <form action="{{ url_for('delete') }}" method = "POST">
+        ID of items : <input name = 'title'/>
+         <input type="submit" class="ui red button"value="DELETE"/>
+     </form>
 </body>
 
 </html>
