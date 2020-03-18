@@ -161,17 +161,33 @@
             <a href="/"><input type="submit" class="ui green button" value="SAVE" style="width: 100px;" /></a>
         </span>
     </form>
-    
     <!-- =============DEBUg ZONE=============== -->
-    <!-- <p>Your item</p>
+    <p>Your item</p>
     <ul>
         {% for item in items %}
         <li><a href="{{ url_for('show_item',id=item.id) }}">{{ item.name + "*** Expire (" + item.date + ") ***" }}</a>
         </li>
         {% endfor %}
-    </ul> -->
+    </ul>
     <!-- =============DEBUg ZONEy=============== -->
 
-</body>
+    {% comment %} <script>
+      addEventListener('load', async () => {
+        let sw = await navigator.serviceWorker.register('./sw.js');
+        console.log(sw);
+      });
 
+      async function subscribe () {
+        let sw = await navigator.serviceWorker.ready;
+        let push = await sw.pushManager.subscribe({
+          userVisibleOnly: true,
+          applicationServerKey:
+            'BOK25RgJa6YgBgnybtBOU1xfa14taMwiDfa4asMkA9uzl507OyEYqriyxXaduqAgPcnn90w4Vc--nCNuwkLxUIA'
+        });
+        console.log(JSON.stringify(push));
+      }
+
+    </script> {% endcomment %}
+
+</body>
 </html>
