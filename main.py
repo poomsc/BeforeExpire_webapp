@@ -11,13 +11,13 @@ items = {}
 
 @app.route('/')
 def index():
+    pushNotification()
     return render_template('index.html',
                             items=items.values())
 
 
 @app.route('/create')
 def create():
-    pushNotification()
     time = str(datetime.now())[0:10].split('-')
     time = time[2] + '/' + time[1] + '/' + time[0]
     return  render_template('create.html',
@@ -107,11 +107,15 @@ def pushNotification():
             
             if left <= 7:
                 count += 1
-                selected += f'{item_ID["name"]} will in expired on {item_ID["date"]} ({left} day(s)).\n'
-    
-    if count > 0:
-        tell = f'You have {count} item(s) will be expired soon!\n' + selected
-        notification.notify(
+                selected = f'{item_ID["name"]} will in expired on {item_ID["date"]} ({left} day(s)).\n'
+                notification.notify(
         title="BeforeEXP", 
-        message= tell,
+        message= selected,
         timeout=20 )
+    
+    # if count > 0:
+    #     tell = f'You have {count} item(s) will be expired soon!\n' + selected
+    #     notification.notify(
+    #     title="BeforeEXP", 
+    #     message= tell,
+    #     timeout=20 )
