@@ -1,0 +1,24 @@
+{
+  "name": "BeforeExpire_webapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "push.js",
+  "dependencies": {
+    "web-push": "^3.4.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/poomsc/BeforeExpire_webapp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/poomsc/BeforeExpire_webapp/issues"
+  },
+  "homepage": "https://github.com/poomsc/BeforeExpire_webapp#readme"
+}
